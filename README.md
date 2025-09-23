@@ -64,12 +64,9 @@ Copy code
 ---
 
 ## ⚙️ Database Setup
-1. Log in to MySQL:
-   ```bash
+
 Create the database:
 
-sql
-Copy code
 CREATE DATABASE MoffatBayLodge;
 USE MoffatBayLodge;
 Import the schema:
@@ -122,6 +119,7 @@ Copy code
 http://localhost:8080/MoffatBayLodge/
 
 👥 Team Members
+
 Usiel Figueroa
 
 Ean Masoner
