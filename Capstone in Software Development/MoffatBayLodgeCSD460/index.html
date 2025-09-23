@@ -1,0 +1,110 @@
+<!--
+Assignment: Moffat Bay Lodge Project
+Authors: Usiel Figueroa, Ean Masoner, Keanu Foltz, and Irene Carrillo Jaramillo
+Date: August 20, 2025
+Professor: Adam Bailey
+Course: CSD 460 Capstone in Software Development
+
+Purpose of Website Project:
+Customers can view all aspects of the Lodge website without being logged in. 
+To book their vacation (lodge reservation), they must be logged in/registered. 
+In other words, to submit a reservation, prompt users to log in or register for a free account. 
+There are no requirements for payment, but users must “click” a button to confirm their reservation. 
+Once a reservation is confirmed, send the record to the database for insertion. 
+The reservations you save in the database will be used to populate the Reservation Lookup page. 
+All registered users should be saved to a table in the database. This table will be used during the 
+login process to validate their access.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Setup -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Home - Moffat Bay Lodge</title>
+  <meta name="description" content="Welcome to Moffat Bay Lodge — explore attractions, view availability, and book your stay. Guests can browse freely; booking requires a free login/registration." />
+  <meta name="keywords" content="Moffat Bay Lodge, lodge, resort, booking, reservations, waterfront, vacation, attractions" />
+  <meta name="author" content="Usiel Figueroa, Ean Masoner, Keanu Foltz, Irene Carrillo Jaramillo" />
+
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Moffat Bay Lodge" />
+  <meta name="twitter:description" content="Browse the lodge website freely. Register or log in to book and confirm your reservation." />
+  <meta name="twitter:image" content="images/Moffat_Bay_Lodge_Logo.PNG" />
+
+  <!-- Theming -->
+  <meta name="theme-color" content="#002f4b" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="images/Moffat_Bay_Lodge_Logo.PNG" alt="Moffat Bay Lodge Logo" />
+    <h1>Moffat Bay Lodge</h1>
+  </header>
+
+  <nav>
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="attractions.html">Attractions</a>
+    <a href="booking.jsp">Booking</a>
+    <a href="summary.jsp">Reservation Summary</a>
+    <a href="lookup.jsp">Reservation Lookup</a>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+  </nav>
+
+  <main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/GoldenratioRevised.jpg" alt="Scenic view of Moffat Bay Lodge" />
+    <div class="hero-text">
+      <h2>Book Your Escape at Moffat Bay Lodge</h2>
+      <p>Experience nature, comfort, and unforgettable memories.</p>
+       <!-- Booking Form -->
+           <!-- index.html -->
+<form id="redirectForm" class="booking-form">
+  <select name="room">
+    <option value="double-full">Double Full Beds - $126.0/night</option>
+	<option value="queen">Queen - $142.0/night</option>
+	<option value="double-queen">Double Queen Beds - $158.0/night</option>
+	<option value="king">King - $168.0/night</option>
+    
+  </select>
+
+  <input type="date" name="checkin" required>
+  <input type="date" name="checkout" required>
+  <input type="number" name="guests" min="1" max="10" placeholder="Guests" required>
+
+  <button type="submit">Book Now</button>
+</form>
+
+<script>
+  // Redirect user to booking.jsp on ANY click inside the form
+  document.getElementById("redirectForm").addEventListener("click", function () {
+    window.location.href = "booking.jsp";
+  });
+</script>
+           
+    </div>
+  </section>
+
+  <h2>Discover Your Perfect Getaway at Moffat Bay Lodge</h2>
+  <p>Escape the everyday and immerse yourself in the serene beauty of Moffat Bay Lodge. Nestled along the waterfront, our lodge offers cozy accommodations, breathtaking views, and a variety of activities for all ages. Whether you're seeking a peaceful retreat or an adventurous getaway, Moffat Bay Lodge is your destination for unforgettable memories. Book your stay today and start your journey toward relaxation and fun.</p>
+  <div class="image-container">
+  <img src="images/salish_salmon_navy.png" alt="Salish Salmon" />
+</div>
+</main>
+
+  <footer>
+    <p>&copy; 2025 Moffat Bay Lodge. All rights reserved.</p>
+  </footer>
+</body>
+</html>

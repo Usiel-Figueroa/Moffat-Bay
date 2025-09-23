@@ -1,0 +1,187 @@
+<!--
+Assignment: Moffat Bay Lodge Project
+Authors: Usiel Figueroa, Ean Masoner, Keanu Foltz, and Irene Carrillo Jaramillo
+Date: September 19, 2025
+Professor: Adam Bailey
+Course: CSD 460 Capstone in Software Development
+
+Purpose of Website Project:
+Customers can view all aspects of the Lodge website without being logged in. 
+To book their vacation (lodge reservation), they must be logged in/registered. 
+In other words, to submit a reservation, prompt users to log in or register for a free account. 
+There are no requirements for payment, but users must “click” a button to confirm their reservation. 
+Once a reservation is confirmed, send the record to the database for insertion. 
+The reservations you save in the database will be used to populate the Reservation Lookup page. 
+All registered users should be saved to a table in the database. This table will be used during the 
+login process to validate their access.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Attractions - Moffat Bay Lodge</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .attractions-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+      align-items: flex-start;
+    }
+    .attractions-left, .attractions-right {
+      flex: 1;
+      min-width: 280px;
+    }
+    .attractions-left img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: block;
+    }
+    .attractions-right h2 {
+      color: #002f4b;
+      margin-top: 0;
+    }
+    .activity {
+      margin-bottom: 20px;
+    }
+    .activity h3 {
+      margin-bottom: 5px;
+      color: #193546;
+    }
+    /* Gallery styling */
+    .gallery {
+      margin-top: 40px;
+    }
+    .gallery h2 {
+      color: #002f4b;
+      margin-bottom: 15px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      text-align: center;
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      object-fit: cover;
+      height: 160px;
+    }
+    .gallery-item p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="images/Moffat_Bay_Lodge_Logo.PNG" alt="Moffat Bay Lodge Logo"
+       style="height:90px;display:block;margin:0 auto;">
+  <h1 style="text-align:center;margin-top:6px;">Moffat Bay Lodge</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="aboutus.html">About Us</a>
+  <a href="attractions.html" aria-current="page">Attractions</a>
+  <a href="booking.jsp">Booking</a>
+  <a href="summary.jsp">Reservation Summary</a>
+  <a href="lookup.jsp">Reservation Lookup</a>
+  <a href="register.jsp">Register</a>
+  <a href="login.jsp">Login</a>
+</nav>
+
+<main>
+  <div class="attractions-container">
+    <!-- Left: Picture placeholder -->
+    <div class="attractions-left">
+      <img src="images/washington.jpg" alt="Adventure activities at Moffat Bay Lodge">
+    </div>
+
+    <!-- Right: Attractions descriptions -->
+    <div class="attractions-right">
+      <h2>Island Attractions</h2>
+      <p>
+        Moffat Bay Lodge is more than just a place to stay — it’s the gateway 
+        to unforgettable experiences. Joviedsa Island offers a wealth of outdoor 
+        adventures and breathtaking natural scenery that make every visit special.
+      </p>
+
+      <div class="activity">
+        <h3>🌲 Hiking</h3>
+        <p>
+          Explore scenic trails that wind through lush forests and along rugged 
+          coastlines. Whether you prefer a gentle nature walk or a challenging trek, 
+          our trails showcase the island’s rich wildlife and panoramic views of 
+          the Pacific Northwest.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>🛶 Kayaking</h3>
+        <p>
+          Glide across calm bay waters and discover hidden coves and quiet beaches. 
+          Kayaking offers a peaceful way to experience the island’s natural beauty, 
+          with opportunities to spot seals, eagles, and other local wildlife.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>🐋 Whale Watching</h3>
+        <p>
+          The waters around the San Juan Islands are famous for orcas and other 
+          marine life. Set out on a guided excursion and witness these magnificent 
+          creatures in their natural habitat — a once-in-a-lifetime experience.
+        </p>
+      </div>
+
+      <div class="activity">
+        <h3>🤿 Scuba Diving</h3>
+        <p>
+          Beneath the surface, a vibrant world awaits. From colorful sea stars to 
+          kelp forests, scuba diving around Joviedsa Island offers an unforgettable 
+          glimpse into the Pacific Northwest’s underwater ecosystems.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery">
+    <h2>Explore the Adventure</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/hiking.jpg" alt="Hiking on Joviedsa Island">
+        <p>Scenic hiking trails with ocean views</p>
+      </div>
+      <div class="gallery-item">
+        <img src="images/kayaking.jpeg" alt="Kayaking in Moffat Bay">
+        <p>Kayaking through calm island waters</p>
+      </div>
+      <div class="gallery-item">
+        <img src="images/whale_watching.jpg" alt="Whale Watching near San Juan Islands">
+        <p>Whale watching adventures</p>
+      </div>
+      <div class="gallery-item">
+        <img src="images/scuba_diving.jpg" alt="Scuba Diving in the Pacific Northwest">
+        <p>Discover the underwater world</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Moffat Bay Lodge. All rights reserved.</p>
+</footer>
+</body>
+</html>

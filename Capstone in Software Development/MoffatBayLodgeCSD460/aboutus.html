@@ -1,0 +1,167 @@
+<!--
+Assignment: Moffat Bay Lodge Project
+Authors: Usiel Figueroa, Ean Masoner, Keanu Foltz, and Irene Carrillo Jaramillo
+Date: August 20, 2025
+Professor: Adam Bailey
+Course: CSD 460 Capstone in Software Development
+
+Purpose of Website Project:
+Customers can view all aspects of the Lodge website without being logged in. 
+To book their vacation (lodge reservation), they must be logged in/registered. 
+In other words, to submit a reservation, prompt users to log in or register for a free account. 
+There are no requirements for payment, but users must “click” a button to confirm their reservation. 
+Once a reservation is confirmed, send the record to the database for insertion. 
+The reservations you save in the database will be used to populate the Reservation Lookup page. 
+All registered users should be saved to a table in the database. This table will be used during the 
+login process to validate their access.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About Us - Moffat Bay Lodge</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+      align-items: flex-start;
+    }
+    .about-left, .about-right {
+      flex: 1;
+      min-width: 280px;
+    }
+    .about-left img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: block;
+    }
+    .about-right h2 {
+      color: #002f4b;
+      margin-top: 0;
+    }
+    .about-section {
+      margin-top: 30px;
+    }
+    .contact-info {
+      margin-top: 40px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+    .contact-info h3 {
+      margin-top: 0;
+      color: #002f4b;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="images/Moffat_Bay_Lodge_Logo.PNG" alt="Moffat Bay Lodge Logo"
+       style="height:90px;display:block;margin:0 auto;">
+  <h1 style="text-align:center;margin-top:6px;">Moffat Bay Lodge</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="aboutus.html" aria-current="page">About Us</a>
+  <a href="attractions.html">Attractions</a>
+  <a href="booking.jsp">Booking</a>
+  <a href="summary.jsp">Reservation Summary</a>
+  <a href="lookup.jsp">Reservation Lookup</a>
+  <a href="register.jsp">Register</a>
+  <a href="login.jsp">Login</a>
+</nav>
+
+<main>
+  <div class="about-container">
+    <!-- Left: Picture placeholder -->
+    <div class="about-left">
+      <img src="images/Joviedsa_Island.jpeg" alt="Moffat Bay Lodge on Joviedsa Island">
+    </div>
+
+    <!-- Right: Description -->
+    <div class="about-right">
+      <h2>About Moffat Bay Lodge</h2>
+      <p>
+        Nestled along the pristine shores of Joviedsa Island in Washington State, 
+        <strong>Moffat Bay Lodge</strong> is a premier waterfront retreat designed 
+        to showcase the natural beauty and cultural heritage of the San Juan Islands. 
+        Just six months ago, the San Juan Islands First Nations Development Committee 
+        approved the vision for a world-class resort at Moffat Bay, bringing together 
+        traditional stewardship of the land with modern guest experiences.
+      </p>
+
+      <p>
+        Construction of the lodge is now nearing completion, with the goal of creating 
+        a sanctuary where guests can relax, recharge, and connect with nature. 
+        Surrounded by breathtaking views of the Pacific Northwest, the resort offers 
+        thoughtfully designed accommodations, locally inspired dining, and a host of 
+        activities that celebrate the island’s unique character. 
+      </p>
+
+      <p>
+        At Moffat Bay Lodge, our mission is to provide more than just a vacation — 
+        we deliver a meaningful escape. Guests can look forward to evenings by the 
+        water, guided cultural experiences, and unparalleled hospitality that reflects 
+        the spirit of the island. Whether you are seeking tranquility, adventure, 
+        or a bit of both, Moffat Bay Lodge promises an unforgettable stay.
+      </p>
+    </div>
+  </div>
+
+  <!-- Luxury Rooms -->
+  <div class="about-section">
+    <h2>Our Luxury Rooms</h2>
+    <p>
+      Each of our rooms has been carefully designed to be one-of-a-kind, offering 
+      a unique experience that blends luxury with comfort. From handcrafted furniture 
+      to island-inspired décor, every detail reflects the natural surroundings of Joviedsa Island. 
+      Whether you choose a cozy waterfront suite or a spacious king room, you’ll enjoy 
+      elegance, modern amenities, and a style all your own. 
+    </p>
+  </div>
+
+  <!-- Activities -->
+  <div class="about-section">
+    <h2>Island Activities</h2>
+    <p>
+      Your adventure begins at Moffat Bay. Guests can enjoy a wide variety of outdoor 
+      activities designed to make the most of the island’s pristine environment:
+    </p>
+    <ul>
+      <li><strong>Hiking</strong> – Explore scenic trails with breathtaking coastal and forest views.</li>
+      <li><strong>Kayaking</strong> – Paddle along calm bay waters and discover hidden coves.</li>
+      <li><strong>Whale Watching</strong> – Experience the thrill of seeing orcas and other marine life.</li>
+      <li><strong>Scuba Diving</strong> – Dive beneath the surface and explore vibrant underwater ecosystems.</li>
+    </ul>
+    <p>
+      Whether you are seeking peaceful exploration or thrilling adventure, the island 
+      offers something for every type of traveler.
+    </p>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="contact-info">
+    <h3>Contact Us</h3>
+    <p><strong>Address:</strong> Moffat Bay Lodge, Joviedsa Island, San Juan Islands, WA</p>
+    <p><strong>Phone:</strong> (360) 444-5555</p>
+    <p><strong>Email:</strong> info@moffatbaylodge.com</p>
+    <p>
+      For inquiries, reservations, or special requests, please don’t hesitate to 
+      reach out to our team. We look forward to welcoming you soon!
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Moffat Bay Lodge. All rights reserved.</p>
+</footer>
+</body>
+</html>

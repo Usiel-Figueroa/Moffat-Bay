@@ -1,0 +1,192 @@
+
+/*
+Assignment: Moffat Bay Lodge Project
+Authors: Usiel Figueroa, Ean Masoner, Keanu Foltz, and Irene Carrillo Jaramillo
+Date: August 20, 2025
+Professor: Adam Bailey
+Course: CSD 460 Capstone in Software Development
+
+Purpose of Website Project:
+Customers can view all aspects of the Lodge website without being logged in. 
+To book their vacation (lodge reservation), they must be logged in/registered. 
+In other words, to submit a reservation, prompt users to log in or register for a free account. 
+There are no requirements for payment, but users must “click” a button to confirm their reservation. 
+Once a reservation is confirmed, send the record to the database for insertion. 
+The reservations you save in the database will be used to populate the Reservation Lookup page. 
+All registered users should be saved to a table in the database. This table will be used during the 
+login process to validate their access.
+*/
+
+body {
+    margin: 0;
+    font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
+    background-color: #fcfbf4;
+    color: #160f29;
+}
+
+/* Header */
+header {
+    background-color: #ffffff; /* White background */
+    color: #002f4b; /* Navy text */
+    padding: 15px 0;
+    text-align: center;
+}
+
+header img {
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+}
+
+header h1 {
+    margin: 10px 0 0;
+}
+
+/* Navigation */
+nav {
+    background-color: #002f4b; /* Blue */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #004b75; /* lighter navy */
+}
+
+/* Main */
+main {
+    padding: 20px;
+    min-height: 70vh;
+}
+
+/* Footer */
+footer {
+    background-color: #002f4b;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        text-align: center;
+        padding: 12px;
+        width: 100%;
+    }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: #002f4b; /* Navy for slogan text */
+  margin-bottom: 30px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* keep it large but not overwhelming */
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Overlay text */
+.hero-text {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.7); /* soft white overlay for contrast */
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.hero-text h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #002f4b; /* Navy headline */
+}
+
+.hero-text p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* Booking Form (inside hero) */
+.booking-form {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap; /* keeps it responsive */
+}
+
+.booking-form select,
+.booking-form input[type="date"] {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 150px; /* medium size */
+}
+
+/* Make the Guests field wider */
+.booking-form input[name="guests"] {
+  min-width: 60px; /* or 150px to match others */
+}
+
+.booking-form button {
+  padding: 8px 20px;
+  font-size: 1rem;
+  background-color: #002f4b; /* Navy */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.booking-form button:hover {
+  background-color: #004b75; /* lighter navy */
+}
+
+.room-preview img {
+  width: 100%;
+  max-width: 540px;
+  height: 660px;            /* fixed height */
+  object-fit: cover;        /* crops the image to fill area */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;    /* centers vertically */
+
+}
+
+.image-container img {
+  max-width: 100px;   /* limit image width */
+  height: auto;       /* keep aspect ratio */
+}
+
