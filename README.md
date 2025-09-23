@@ -58,8 +58,7 @@ MoffatBayLodge/
 │
 └── README.md
 
-yaml
-Copy code
+
 
 ---
 
