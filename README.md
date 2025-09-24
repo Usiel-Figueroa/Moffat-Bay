@@ -86,9 +86,8 @@ Right-click → Run As → Run on Server → Select Tomcat.
 
 Open in browser:
 
-arduino
-
 http://localhost:8080/MoffatBayLodge/
+
 
 
 
