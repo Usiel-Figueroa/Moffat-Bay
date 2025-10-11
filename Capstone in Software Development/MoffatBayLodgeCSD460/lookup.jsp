@@ -211,44 +211,53 @@ login process to validate their access.
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
-        <%
-          for (Map<String,Object> row : results) {
-              Object rid = row.get("reservation_id");
-              String first = row.get("first_name") == null ? "" : row.get("first_name").toString();
-              String last  = row.get("last_name") == null ? "" : row.get("last_name").toString();
-              String guestName = (first + " " + last).trim();
-              Object email = row.get("email");
-              Object room = row.get("room_type");
-              Object ng  = row.get("num_guests");
-              Object ci  = row.get("check_in");
-              Object co  = row.get("check_out");
-              Object st  = row.get("status");
-              Object pr  = row.get("price_per_night");
-              String ciStr = (ci == null) ? "" : ci.toString();
-              String coStr = (co == null) ? "" : co.toString();
-        %>
-          <tr>
-            <td><%= rid %></td>
-            <td><%= guestName %></td>
-            <td><%= email == null ? "" : email %></td>
-            <td><%= room %></td>
-            <td><%= ng %></td>
-            <td><%= ciStr %></td>
-            <td><%= coStr %></td>
-            <td>
-              <% if (pr != null) { %>
-                $<%= String.format("%.2f", ((Number)pr).doubleValue()) %>
-              <% } else { %>
-                -
-              <% } %>
-            </td>
-            <td><%= st == null ? "" : st %></td>
-          </tr>
-        <%
-          } // end for
-        %>
-        </tbody>
+       <tbody>
+<%
+  for (Map<String,Object> row : results) {
+      Object rid = row.get("reservation_id");
+      String first = row.get("first_name") == null ? "" : row.get("first_name").toString();
+      String last  = row.get("last_name") == null ? "" : row.get("last_name").toString();
+      String guestName = (first + " " + last).trim();
+      Object email = row.get("email");
+      Object room = row.get("room_type");
+      Object ng  = row.get("num_guests");
+      Object ci  = row.get("check_in");
+      Object co  = row.get("check_out");
+      Object st  = row.get("status");
+      Object pr  = row.get("price_per_night");
+      String ciStr = (ci == null) ? "" : ci.toString();
+      String coStr = (co == null) ? "" : co.toString();
+%>
+  <tr>
+    <td><%= rid %></td>
+    <td><%= guestName %></td>
+    <td><%= email == null ? "" : email %></td>
+    <td>
+      <%
+        String roomType = (room == null) ? "" : room.toString().replace("_", " ").trim();
+        if (!roomType.isEmpty()) {
+            roomType = roomType.substring(0,1).toUpperCase() + roomType.substring(1).toLowerCase();
+        }
+      %>
+      <%= roomType %>
+    </td>
+    <td><%= ng %></td>
+    <td><%= ciStr %></td>
+    <td><%= coStr %></td>
+    <td>
+      <% if (pr != null) { %>
+        $<%= String.format("%.2f", ((Number)pr).doubleValue()) %>
+      <% } else { %>
+        -
+      <% } %>
+    </td>
+    <td><%= st == null ? "" : st %></td>
+  </tr>
+<%
+  } // end for
+%>
+</tbody>
+       
       </table>
 
       <div style="margin-top:14px;">

@@ -18,6 +18,25 @@ login process to validate their access.
 
 <%@ page import="java.sql.*" %>
 <%@ page import="com.moffatbay.util.DBUtil" %>
+
+<%!
+    // Helper method: convert text like "double_full" → "Double Full"
+    public String titleCase(String text) {
+        if (text == null || text.isEmpty()) return text;
+        text = text.replace("_", " ");
+        String[] words = text.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (String w : words) {
+            if (w.length() > 0) {
+                result.append(Character.toUpperCase(w.charAt(0)))
+                      .append(w.substring(1).toLowerCase())
+                      .append(" ");
+            }
+        }
+        return result.toString().trim();
+    }
+%>
+
 <%
     String ctxPath = request.getContextPath();
 
@@ -57,6 +76,7 @@ login process to validate their access.
     // Today's date for min attribute
     java.time.LocalDate today = java.time.LocalDate.now();
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +118,7 @@ login process to validate their access.
 
   <h2>Book Your Stay</h2>
   <p>
-    Please select your room and see the details (photo + description) on the left.  
+    Please select your room and see the details (photo + description) on the left.<br>
     <strong>Note:</strong> To confirm your reservation, you must 
     <a href="login.jsp">log in</a> or 
     <a href="register.jsp">register</a> for free.
@@ -123,13 +143,14 @@ login process to validate their access.
                  ResultSet rs = stmt.executeQuery("SELECT room_id, room_type, price_per_night FROM Rooms")) {
                 while (rs.next()) {
                     int rid = rs.getInt("room_id");
-                    String type = rs.getString("room_type");
+                    String typeRaw = rs.getString("room_type");
+                    String typeDisplay = titleCase(typeRaw); // Full title-casing
                     double price = rs.getDouble("price_per_night");
           %>
             <option value="<%=rid%>"
-              data-image="<%=ctxPath%>/images/room_<%=type.toLowerCase().replace(' ','_')%>.jpg"
-              data-desc="Enjoy our <%=type%> with modern amenities and cozy comfort.">
-              <%=type%> - $<%=price%>/night
+              data-image="<%=ctxPath%>/images/room_<%=typeRaw.toLowerCase().replace(' ','_')%>.jpg"
+              data-desc="Experience our elegant <%=typeDisplay%> designed for comfort and relaxation.<br>Featuring scenic views and premium amenities.">
+              <%=typeDisplay%> - $<%=String.format("%.2f", price)%>/night
             </option>
           <%
                 }
@@ -168,7 +189,7 @@ login process to validate their access.
 
     document.getElementById('previewImg').src = imgUrl;
     document.getElementById('previewTitle').textContent = title;
-    document.getElementById('previewDesc').textContent = desc;
+    document.getElementById('previewDesc').innerHTML = desc;
   }
   document.getElementById('room').addEventListener('change', updatePreviewFromSelect);
   document.addEventListener('DOMContentLoaded', updatePreviewFromSelect);

@@ -18,6 +18,25 @@ login process to validate their access.
 
 <%@ page import="java.sql.*" %>
 <%@ page import="com.moffatbay.util.DBUtil" %>
+
+<%! 
+    // Helper: Format room type in Title Case (replaces underscores with spaces)
+    public String toTitleCase(String input) {
+        if (input == null || input.isEmpty()) return "";
+        input = input.replace("_", " ");
+        String[] words = input.split(" ");
+        StringBuilder formatted = new StringBuilder();
+        for (String w : words) {
+            if (!w.isEmpty()) {
+                formatted.append(Character.toUpperCase(w.charAt(0)))
+                         .append(w.substring(1).toLowerCase())
+                         .append(" ");
+            }
+        }
+        return formatted.toString().trim();
+    }
+%>
+
 <%
     String ctxPath = request.getContextPath();
     String message = "";
@@ -59,7 +78,7 @@ login process to validate their access.
             stmt.setInt(1, Integer.parseInt(roomId));
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                roomType = rs.getString("room_type");
+                roomType = toTitleCase(rs.getString("room_type")); // ✅ Cleaned formatting here
                 price = rs.getDouble("price_per_night");
             }
         } catch (Exception e) {
@@ -132,6 +151,7 @@ login process to validate their access.
         return;
     }
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,14 +187,12 @@ login process to validate their access.
   <% if (!message.isEmpty()) { %>
     <p><%=message%></p>
   <% } else if (roomId == null) { %>
-    <!-- Fallback after refresh -->
     <p style="color:blue;">
       You have no pending reservations to confirm.<br>
       To view your confirmed bookings, please visit the 
       <a href="lookup.jsp">Reservation Lookup</a> page.
     </p>
   <% } else { %>
-    <!-- Standard review before confirm -->
     <p>Please review your reservation details before confirming.</p>
 
     <table border="1" cellpadding="8" cellspacing="0" style="margin-top:15px; border-collapse:collapse;">
@@ -182,7 +200,7 @@ login process to validate their access.
       <tr><th>Check-in</th><td><%=checkin%></td></tr>
       <tr><th>Check-out</th><td><%=checkout%></td></tr>
       <tr><th>Guests</th><td><%=guests%></td></tr>
-      <tr><th>Price per Night</th><td>$<%=price%></td></tr>
+      <tr><th>Price per Night</th><td>$<%=String.format("%.2f", price)%></td></tr>
     </table>
 
     <form method="post" style="margin-top:20px;">
